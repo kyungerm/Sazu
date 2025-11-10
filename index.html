@@ -1,0 +1,787 @@
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대표 인사말 - 김윤균 사주명리 상담소</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* 헤더 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #8b7355;
+        }
+
+        /* 메인 비주얼 */
+        .main-visual {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-visual::before { /* 아이디병원처럼 은은한 패턴 추가 */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLW9wYWNpdHk9IjAuMSIgZmlsbC1ruleT0iZXZlbm9kZCI+PGNpcmNsZSBmaWxsPSIjRkZGRkZGIiBjeD0iMzAiIGN5PSIzMCIgcj0iMTYiLz48L2c+PC9zdmc+');
+            background-repeat: repeat;
+            opacity: 0.1;
+        }
+
+        .main-visual h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 52px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-visual .welcome-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            opacity: 0.95;
+            margin-top: 10px;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 컨테이너 */
+        .container {
+            max-width: 1000px;
+            margin: -60px auto 0;
+            padding: 0 40px 80px;
+            position: relative;
+        }
+
+        /* 프로필 섹션 */
+        .profile-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+            overflow: hidden; /* 이미지 오버플로우 방지 */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 이미지가 원형에 맞게 채워지도록 */
+        }
+
+        .profile-info h2 {
+            font-size: 36px; /* 더 크게 */
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .profile-info .title {
+            font-size: 19px; /* 조금 크게 */
+            color: #8b7355;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #e9eef6; /* 좀 더 부드러운 배경색 */
+            color: #5a7d9f; /* 태그 색상 변경 */
+            padding: 8px 18px;
+            border-radius: 25px; /* 더 둥글게 */
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .tag:hover {
+            background-color: #dbe4f2;
+        }
+
+        /* 인사말 텍스트 */
+        .intro-text {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 20px;
+            line-height: 1.6;
+            color: #444;
+            text-align: center;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+        .intro-text strong {
+            font-size: 24px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        .intro-text span {
+            font-size: 22px;
+            color: #8b7355;
+            font-weight: 600;
+        }
+
+
+        /* 콘텐츠 섹션 */
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .content-section h3 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 25px; /* 문단 간격 유지 */
+            text-align: justify; /* 양쪽 정렬 */
+        }
+        /* 문장 끝에 엔터 적용된 것처럼 보이도록 */
+        .content-section p:not(:last-child) {
+            margin-bottom: 25px;
+        }
+
+        .content-section ul {
+            list-style: none;
+            margin: 30px 0;
+            padding-left: 0;
+        }
+
+        .content-section ul li {
+            padding: 15px 0;
+            position: relative;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .content-section ul li strong {
+            display: block;
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            padding-left: 0; /* 불릿과 겹치지 않게 */
+        }
+
+        .content-section ul li p {
+            margin-bottom: 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .content-section ul li p::before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 1.2em;
+            line-height: 1;
+            top: 4px;
+        }
+
+        /* 강조 박스 */
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 4px solid #667eea;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box strong {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+
+        /* CTA 섹션 */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+            background: white; /* CTA 섹션도 흰색 배경 */
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+
+        .cta-section h3 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 19px; /* 버튼 텍스트 좀 더 크게 */
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px); /* 호버 시 약간 위로 */
+            box-shadow: 0 18px 45px rgba(102, 126, 234, 0.45); /* 그림자 더 강조 */
+        }
+
+        /* 푸터 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .main-visual h1 {
+                font-size: 38px;
+            }
+            .main-visual .welcome-text {
+                font-size: 18px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                font-size: 38px;
+            }
+            .profile-info h2 {
+                font-size: 28px;
+            }
+            .profile-info .title {
+                font-size: 16px;
+            }
+
+            .profile-section, .content-section {
+                padding: 30px;
+            }
+
+            .container {
+                padding: 0 20px 60px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+            .content-section ul li p {
+                padding-left: 0;
+            }
+            .content-section ul li p::before {
+                position: static;
+                margin-right: 8px;
+            }
+            .content-section h3 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            .cta-section h3 {
+                font-size: 24px;
+            }
+            .cta-section p {
+                font-size: 16px;
+            }
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 17px;
+            }
+            .intro-text {
+                font-size: 16px;
+            }
+            .intro-text strong {
+                font-size: 20px;
+            }
+            .intro-text span {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav>
+            <div class="logo">김윤균 사주명리</div>
+            <ul class="nav-menu">
+                <li><a href="#about">대표소개</a></li>
+                <li><a href="#philosophy">상담철학</a></li>
+                <li><a href="#advantage">차별점</a></li>
+                <li><a href="#qualification">전문성</a></li>
+                <li><a href="#contact">상담문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 메인 비주얼 -->
+    <section class="main-visual">
+        <h1>대표 인사말</h1>
+        <p class="welcome-text">Welcome to Kim Yun Kyun's Four Pillars of Destiny Research Institute</p>
+    </section>
+
+    <!-- 메인 컨테이너 -->
+    <div class="container">
+        <!-- 프로필 섹션 -->
+        <section class="profile-section" id="about">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <!-- 김윤균님의 사진을 넣을 공간입니다. -->
+                    <!-- <img src="your_image_path.jpg" alt="김윤균 대표"> -->
+                    김윤균
+                </div>
+                <div class="profile-info">
+                    <h2>김윤균 대표</h2>
+                    <p class="title">사주명리 상담가 · 간호학 컨설턴트</p>
+                    <div class="profile-tags">
+                        <span class="tag">간호학 전공</span>
+                        <span class="tag">사회복지사</span>
+                        <span class="tag">청소년지도사</span>
+                        <span class="tag">한국어교원</span>
+                        <span class="tag">장례지도사</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="intro-text">
+                <strong>최고의 사주 상담과 솔루션을 제공하는 사주명리학의 명가,</strong><br>
+                <span>김윤균 사주명리학 연구소에 오신 여러분을 환영합니다.</span><br>
+                당신의 평생 사주 상담가이자 길잡이로서 당신의 삶과 함께합니다.
+            </p>
+        </section>
+
+        <!-- 돌봄의 여러 얼굴 -->
+        <section class="content-section" id="philosophy">
+            <h3>돌봄의 여러 얼굴</h3>
+            
+            <p>
+                저는 간호학을 전공하고 있습니다.
+            </p>
+            <p>
+                간호학은 인간을 총체적으로 이해하고, 그들의 고통을 완화하며, 건강을 회복시키는 학문입니다.
+                환자의 신체를 돌보는 것. 그것이 간호의 시작입니다.
+            </p>
+
+            <p>
+                하지만 저는 간호학을 공부하면서 깨달았습니다.
+                돌봄은 신체에만 머물지 않는다는 것을.
+            </p>
+            <p>
+                사회복지사 과정을 밟으며 '사회적 돌봄'을 배웠습니다.
+                개인의 문제는 종종 사회 구조와 환경의 문제이며,
+                진정한 치유를 위해서는 그 사람이 속한 시스템 전체를 이해해야 한다는 것을.
+            </p>
+
+            <p>
+                청소년지도사 과정에서는 '발달적 돌봄'을 익혔습니다.
+                청소년기는 정체성을 형성하고 진로를 고민하는 중요한 시기입니다.
+                이 시기의 청소년들을 제대로 이해하고 안내하려면,
+                그들의 발달 단계와 심리적 특성, 그리고 잠재력을 정확히 파악해야 합니다.
+            </p>
+
+            <p>
+                한국어 교원 과정을 통해서는 '문화적 돌봄'과 '소통의 기술'을 배웠습니다.
+                다른 문화권에서 온 사람들에게 언어를 가르치는 것은 단순히 문법을 전달하는 것이 아닙니다.
+                그들의 문화적 배경을 이해하고, 각자의 학습 스타일을 파악하며, 효과적으로 소통하는 방법을 찾아야 합니다.
+            </p>
+
+            <p>
+                그리고 장례지도사로서 저는 '마지막 돌봄'을 경험했습니다.
+                누군가의 생애를 정리하고, 남은 이들의 슬픔을 어루만지는 일.
+                그 과정에서 저는 수없이 많은 사람들의 삶 전체를 목격했습니다.
+            </p>
+        </section>
+
+        <!-- 삶과 죽음의 경계에서 던진 질문 -->
+        <section class="content-section">
+            <h3>삶과 죽음의 경계에서 던진 질문</h3>
+            
+            <p>
+                장례식장에서 저는 깨달았습니다.
+                어떤 삶은 찬란했고, 어떤 삶은 고단했습니다.
+                어떤 사람은 자신의 재능을 마음껏 펼쳤고, 어떤 사람은 자신이 누구인지도 모른 채 살다 갔습니다.
+            </p>
+
+            <p>
+                간호사로서 환자의 '현재'를 돌본다면, 장례지도사로서는 고인의 '생애 전체'를 마주합니다.
+                그 사람이 어떻게 태어나 어떤 선택을 하며 살았는지,
+                어떤 관계를 맺고 무엇을 소중히 여겼는지가 고스란히 드러납니다.
+            </p>
+
+            <p>
+                저는 질문하기 시작했습니다.
+                "왜 어떤 사람은 그렇게 살았을까? 그 사람의 삶에는 어떤 패턴이 있었을까?
+                만약 그 사람이 자신을 조금 더 일찍 이해했다면, 다른 선택을 할 수 있었을까?"
+            </p>
+
+            <p>
+                사회복지사로서 배운 생태체계 이론은 개인과 환경의 상호작용을 설명했지만,
+                왜 같은 환경에서도 사람들이 다르게 반응하는지는 설명하지 못했습니다.
+            </p>
+            <p>
+                청소년지도사로서 배운 발달 이론은 연령대별 특성을 알려주었지만,
+                같은 나이의 청소년들이 왜 그토록 다른 진로를 원하는지는 설명하지 못했습니다.
+            </p>
+
+            <div class="highlight-box">
+                <strong>그 질문의 답을 찾아가는 과정에서, 저는 사주명리학을 만났습니다.</strong>
+            </div>
+        </section>
+
+        <!-- 통합적 이해, 전인적 접근 -->
+        <section class="content-section">
+            <h3>통합적 이해, 전인적 접근</h3>
+            
+            <p>사주명리학은 제게 퍼즐의 마지막 조각이었습니다.</p>
+
+            <p>
+                간호학이 신체적 건강을 다룬다면, 사주명리학은 타고난 기질과 에너지의 흐름을 다룹니다.
+            </p>
+            <p>
+                사회복지학이 환경과 시스템을 분석한다면, 사주명리학은 개인이 환경과 어떻게 상호작용하는지 그 패턴을 보여줍니다.
+            </p>
+            <p>
+                청소년지도사로서 진로와 적성을 상담할 때, 사주명리학은 그 청소년의 타고난 재능과 적합한 방향을 구체적으로 제시합니다.
+            </p>
+
+            <p>
+                한국어를 가르치며 각 학습자의 특성을 파악하듯, 사주 상담에서도 각 내담자의 고유한 언어와 리듬을 이해해야 합니다.
+                효과적인 소통은 상대방의 세계를 이해하는 것에서 시작됩니다.
+                사주는 바로 그 사람의 '내면 언어'를 알려주는 지도입니다.
+            </p>
+
+            <p>
+                저는 이 모든 분야를 통합했습니다.
+                간호학의 전인적 사정, 사회복지학의 체계적 분석, 청소년지도학의 발달적 관점,
+                한국어 교육학의 소통 기술, 장례 현장의 생애 통찰.
+                그리고 그 중심에 사주명리학을 놓았습니다.
+            </p>
+        </section>
+
+        <!-- 근거 기반의 명리학 -->
+        <section class="content-section">
+            <h3>근거 기반의 명리학</h3>
+            
+            <p>
+                간호학 컨설팅 기업을 운영하면서, 저는 늘 데이터와 전략을 다뤄왔습니다.
+                임상 데이터를 분석하고, 간호 조직을 진단하며,
+                증거 기반 실무(Evidence-Based Practice)로 최선의 개선 방안을 제시하는 일.
+            </p>
+
+            <p>
+                사주명리학을 만났을 때, 저는 이것이 단순한 점술이 아니라
+                '인간 이해의 데이터 과학'이라는 것을 직감했습니다.
+                음양오행, 천간지지, 십성, 격국, 용신...
+                이 모든 개념들은 수천 년간 축적된 인간 행동 패턴의 데이터베이스였습니다.
+            </p>
+
+            <p>
+                그래서 저는 간호 연구를 하듯, 명리학을 연구하기 시작했습니다.
+                『자평진전』의 격국론, 『적천수』의 음양 조화론, 『궁통보감』의 조후론, 『명리정종』의 병약설...
+                명리학의 5대 고전을 비롯한 13종의 서적을 분석했습니다.
+            </p>
+
+            <p>
+                왜 『자평진전』은 격국을 중심으로 사주를 해석할까요?
+                왜 『적천수』는 격국에 얽매이지 말라고 했을까요?
+                각 이론의 한계와 강점은 무엇이며, 어떻게 통합할 수 있을까요?
+                저는 Evidence-Based Practice의 관점에서 고전들을 재해석했습니다.
+            </p>
+        </section>
+
+        <!-- 타 사주 업체와는 다른 장점 -->
+        <section class="content-section" id="advantage">
+            <h3>타 사주 업체와는 다른 장점</h3>
+            
+            <p>
+                시중에는 수많은 사주 상담이 존재합니다.
+                하지만 많은 곳이 단순한 흥미 위주의 해석, 혹은 근거 없는 추측에 머무르는 경우가 많습니다.
+            </p>
+            <p>
+                김윤균 사주명리 상담소는 다릅니다.
+            </p>
+
+            <p>
+                저의 상담은 <strong>정통 명리학 이론과 수천 년간 축적된 고서(古書) 등 학술적 근거에 기반</strong>을 둡니다.
+                단순히 단편적인 지식으로 사주를 풀이하는 것이 아니라,
+                명리학의 주요 고전인 『자평진전』, 『적천수』, 『궁통보감』, 『명리정종』 등을 깊이 연구하고,
+                그 이론들을 현대적 관점에서 재해석하여 적용합니다.
+            </p>
+            <p>
+                이는 전문성 없는 접근, 혹은 근거 없는 사주 풀이와는 <strong>확연히 차별화되는 지점</strong>입니다.
+                명리학에 대한 깊이 있는 이해와 끊임없는 연구 없이는 결코 제공할 수 없는 수준의 분석을 약속드립니다.
+            </p>
+
+            <p>
+                또한, 제가 간호학, 사회복지학, 청소년지도학, 한국어 교육학, 장례지도 분야에서 쌓아온
+                <strong>통합적 이해 능력과 총체적 돌봄의 관점</strong>은,
+                사주명리학과 만나 압도적인 시너지를 발휘합니다.
+            </p>
+            <p>
+                이는 단순히 개인의 운명을 읽는 것을 넘어,
+                내담자의 신체적, 심리적, 사회적, 문화적 배경까지 아우르는
+                <strong>전인적인 해석과 실질적인 솔루션</strong>을 제공합니다.
+            </p>
+            <p>
+                다른 어떤 곳에서도 경험할 수 없는,
+                당신을 진정으로 이해하고 삶의 방향을 제시하는 김윤균 사주명리 상담소의 압도적인 전문성을 경험해보십시오.
+                당신의 삶에 대한 가장 깊이 있고 신뢰할 수 있는 통찰을 얻게 될 것입니다.
+            </p>
+        </section>
+
+
+        <!-- 각 분야의 시너지 -->
+        <section class="content-section">
+            <h3>각 분야의 시너지</h3>
+            
+            <p>제 상담에서는 모든 분야가 유기적으로 작동합니다.</p>
+            <ul>
+                <li>
+                    <strong>간호학적 접근</strong>
+                    <p>환자를 사정하듯 내담자의 현재 상태를 총체적으로 파악합니다. 신체적·심리적·사회적·영적 측면을 모두 고려하며, NANDA 간호진단 체계처럼 사주를 체계적으로 분석합니다.</p>
+                </li>
+                <li>
+                    <strong>사회복지학적 관점</strong>
+                    <p>개인의 문제를 사회적 맥락에서 이해합니다. 생태체계 이론으로 내담자가 속한 가족, 직장, 사회 시스템을 분석하고, 사주와 환경의 상호작용을 파악합니다. 강점 관점으로 문제보다 가능성에 초점을 맞춥니다.</p>
+                </li>
+                <li>
+                    <strong>청소년지도학적 통찰</strong>
+                    <p>에릭슨의 심리사회적 발달 이론, 슈퍼의 진로발달 이론을 활용해 내담자의 생애 단계를 이해합니다. 특히 청소년 상담에서는 정체성 형성, 진로 탐색, 또래 관계를 사주와 연결해 구체적 가이드를 제공합니다.</p>
+                </li>
+                <li>
+                    <strong>한국어 교육학적 소통</strong>
+                    <p>내담자의 '언어'로 말합니다. 어려운 명리 용어를 쉽게 풀어내고, 상대방의 이해 수준에 맞춰 설명합니다. 효과적인 피드백 기법으로 내담자가 스스로 통찰을 얻도록 돕습니다.</p>
+                </li>
+                <li>
+                    <strong>장례지도사의 생애 관점</strong>
+                    <p>현재의 문제만 보지 않고, 과거-현재-미래를 연결해 봅니다. 생애 전환점을 이해하고, 죽음을 삶의 일부로 받아들이는 성숙한 관점을 제공합니다.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 실질적이고 구체적인 상담 -->
+        <section class="content-section">
+            <h3>실질적이고 구체적인 상담</h3>
+            
+            <p>저는 막연한 이야기를 하지 않습니다.</p>
+
+            <p>
+                "당신은 목이 강하니 나무와 관련된 일을 하세요"가 아니라,
+                간호학적 사정으로 현재 상태를 파악하고, 사회복지학적 분석으로 환경을 고려하며,
+                청소년지도학적 발달 이론으로 시기를 판단해,
+                "지금 이 시점에서 당신의 강점을 살릴 수 있는 구체적인 방향은 이것입니다"라고 말합니다.
+            </p>
+
+            <p>
+                진로 상담을 할 때는 홀랜드 직업흥미 이론, 슈퍼의 진로발달 단계와 사주를 통합합니다.
+                관계 상담을 할 때는 가족체계 이론과 애착 이론을 사주 합과 연결합니다.
+                건강 상담을 할 때는 간호학의 병리 지식과 사주의 오행 균형을 함께 봅니다.
+            </p>
+        </section>
+
+        <!-- 제가 만나고 싶은 분들 -->
+        <section class="content-section">
+            <h3>제가 만나고 싶은 분들</h3>
+            
+            <ul>
+                <li>"사주가 궁금한데, 막연한 이야기가 아니라 체계적이고 논리적인 설명을 듣고 싶어요."</li>
+                <li>"나를 총체적으로 이해하고 싶어요. 내 몸, 내 마음, 내 환경, 내 관계 모두를."</li>
+                <li>"청소년 자녀의 진로 때문에 고민이에요. 발달 단계에 맞는 구체적인 가이드가 필요해요."</li>
+                <li>"사회 생활에서 겪는 어려움을 사주로 이해하고, 실질적인 대응 전략을 세우고 싶어요."</li>
+                <li>"인생의 전환점에서 지금 내가 어디에 있는지, 어디로 가야 하는지 알고 싶어요."</li>
+            </ul>
+        </section>
+
+        <!-- 통합적 치유를 제안합니다 (마지막 감동 멘트) -->
+        <section class="content-section">
+            <h3>통합적 치유를 제안합니다</h3>
+            
+            <p>저는 여러분의 사주를 점치는 사람이 아닙니다.</p>
+
+            <p>
+                간호사가 환자를 돌보듯, 사회복지사가 클라이언트를 지원하듯,
+                청소년지도사가 청소년을 안내하듯, 한국어 교사가 학습자와 소통하듯,
+                장례지도사가 생애를 정리하듯.
+            </p>
+
+            <p>
+                저는 여러분의 사주라는 지도를 함께 읽고, 신체와 마음, 환경과 관계,
+                과거와 미래를 통합적으로 이해하며, 구체적이고 실질적인 치유의 방향을 제시하는 사람입니다.
+            </p>
+
+            <p>
+                제가 배운 모든 것, 경험한 모든 것은 결국 하나를 향합니다.
+                "당신이 당신답게, 가장 건강하게 살 수 있도록 돕는 것."
+            </p>
+
+            <p>
+                간호사가 되기 위해 공부하면서, 사회복지와 청소년지도를 배우면서,
+                한국어를 가르치고 장례를 안내하면서, 명리학을 연구하면서 제가 배운 것은 하나입니다.
+            </p>
+
+            <div class="highlight-box">
+                <strong>"치유의 본질은 통합적 이해입니다. ​자신을 총체적으로 이해하고, 삶을 맥락 속에서 이해하며, 가능성을 구체적으로 이해할 때, 진정한 변화가 시작됩니다."</strong>
+            </div>
+        </section>
+
+        <!-- 학력 및 자격 -->
+        <section class="content-section" id="qualification">
+            <h3>학력 및 자격</h3>
+            <ul>
+                <li>경동대학교 간호학과 졸업 예정</li>
+                <li>간호사 면허 취득 예정</li>
+                <li>외국어로서의 한국어학 학사 과정 중</li>
+                <li>장례지도사 자격</li>
+                <li>한국어 교원 2급 진행 중</li>
+                <li>사회복지사 2급 예정 (2026년 2월)</li>
+                <li>청소년지도사 2급 예정 (2026년 2월)</li>
+            </ul>
+        </section>
+
+        <!-- 카카오톡 오픈채팅 버튼 섹션 -->
+        <section class="cta-section" id="contact">
+            <h3>지금 바로 김윤균 대표와 함께 당신의 삶을 탐색해보세요!</h3>
+            <p>
+                진정으로 '나'를 이해하고, 삶의 중요한 순간마다 현명한 선택을 내릴 수 있도록 돕겠습니다.<br>
+                카카오톡 오픈채팅에서 편안하게 상담을 시작해보세요.
+                당신의 더 나은 삶을 위한 첫걸음, 김윤균 사주명리 상담소가 함께합니다.
+            </p>
+            <a href="https://open.kakao.com/o/smXa78wh" class="cta-button" target="_blank">김윤균의 첨삭 상담방 참여하기</a>
+        </section>
+
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2025 김윤균 사주명리 상담소. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+```
